@@ -4,7 +4,7 @@ from model import JournalSearchModel
 st.title("Jurnal Finder")
 st.write("Temukan jurnal yang relevan dengan mudah.")
 
-file_path = "project IR\dataset IR.xlsx"
+file_path = "dataset IR.xlsx"
 stopword_path = "stopword-list.txt"
 kata_dasar_path = "kata-dasar.txt"
 model = JournalSearchModel(file_path, stopword_path, kata_dasar_path)
