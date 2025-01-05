@@ -227,7 +227,9 @@ class JournalSearchModel:
     def process_query(self, query):
         tokens = self.preprocessing(query)
         tf = self.calculate_tf(tokens)
-        query_vector = {token: tf[token] * self.idf.get(token, 0) for token in tokens}
+        total_terms = len(set(tokens))
+        idf = {token: log(total_terms / tokens.count(token)) for token in set(tokens)}
+        query_vector = {token: tf[token] * idf[token] for token in tokens}
         return tokens, query_vector
 
     def retrieve_by_inverted_index(self, query_tokens):
